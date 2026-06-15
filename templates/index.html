@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SPK MOORA — Penulis Terbaik LTC Indonesia</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════ HEADER ═══════════════════════ -->
+<header>
+  <div class="header-inner">
+    <div class="logo-wrap">
+      <span class="logo-icon">🎭</span>
+      <div>
+        <h1>SPK Penulis Terbaik</h1>
+        <p>Lab Teater Ciputat (LTC) Indonesia &nbsp;·&nbsp; Metode <strong>MOORA</strong></p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════ MAIN ═══════════════════════ -->
+<main>
+
+  <!-- ── Kriteria ── -->
+  <section class="card" id="sec-kriteria">
+    <div class="card-head">
+      <span class="step-badge">1</span>
+      <h2>Data Kriteria</h2>
+      <button class="btn-sm btn-add" onclick="tambahKriteria()">+ Tambah Kriteria</button>
+    </div>
+    <div class="table-wrap">
+      <table id="tbl-kriteria">
+        <thead>
+          <tr>
+            <th>Kode</th><th>Nama Kriteria</th><th>Sifat</th><th>Bobot</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="body-kriteria"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ── Alternatif ── -->
+  <section class="card" id="sec-alternatif">
+    <div class="card-head">
+      <span class="step-badge">2</span>
+      <h2>Data Alternatif (Penulis)</h2>
+      <button class="btn-sm btn-add" onclick="tambahAlternatif()">+ Tambah Penulis</button>
+    </div>
+    <div class="table-wrap" id="wrap-alternatif"></div>
+  </section>
+
+  <!-- ── Tombol Hitung ── -->
+  <div class="center-btn">
+    <button class="btn-hitung" onclick="hitungMoora()">
+      ⚡ Hitung MOORA
+    </button>
+  </div>
+
+  <!-- ══════════════ HASIL ══════════════ -->
+  <div id="hasil-wrap" style="display:none">
+
+    <!-- Step 1 -->
+    <section class="card result-card">
+      <div class="card-head">
+        <span class="step-badge green">①</span>
+        <h2>Langkah 1 — Matriks Keputusan (X)</h2>
+      </div>
+      <div class="table-wrap" id="out-step1"></div>
+    </section>
+
+    <!-- Step 2 -->
+    <section class="card result-card">
+      <div class="card-head">
+        <span class="step-badge green">②</span>
+        <h2>Langkah 2 — Matriks Normalisasi (X*)</h2>
+      </div>
+      <p class="formula">Xij* = Xij / √(Σ Xij²)</p>
+      <div id="out-penyebut" class="info-box"></div>
+      <div class="table-wrap" id="out-step2"></div>
+    </section>
+
+    <!-- Step 3 -->
+    <section class="card result-card">
+      <div class="card-head">
+        <span class="step-badge green">③</span>
+        <h2>Langkah 3 — Matriks Normalisasi Terbobot</h2>
+      </div>
+      <p class="formula">Vij = Wj × Xij*</p>
+      <div class="table-wrap" id="out-step3"></div>
+    </section>
+
+    <!-- Step 4 -->
+    <section class="card result-card">
+      <div class="card-head">
+        <span class="step-badge green">④</span>
+        <h2>Langkah 4 — Nilai Optimasi (Yi)</h2>
+      </div>
+      <p class="formula">Yi = Σ Benefit − Σ Cost</p>
+      <div id="out-cols-info" class="info-box"></div>
+      <div class="table-wrap" id="out-step4"></div>
+    </section>
+
+    <!-- Step 5 — Ranking -->
+    <section class="card result-card">
+      <div class="card-head">
+        <span class="step-badge gold">⑤</span>
+        <h2>Langkah 5 — Hasil Perankingan</h2>
+      </div>
+      <div id="out-podium" class="podium-wrap"></div>
+      <div class="table-wrap" id="out-step5"></div>
+    </section>
+
+  </div><!-- /hasil-wrap -->
+
+</main>
+
+<footer>
+  <p>SPK MOORA &copy; 2025 · LTC Indonesia</p>
+</footer>
+
+<script src="/static/app.js"></script>
+<script>
+  // Inject default data dari Flask
+  const DEFAULT_KRITERIA    = {{ default_kriteria | safe }};
+  const DEFAULT_ALTERNATIF  = {{ default_alternatif | safe }};
+  initApp(DEFAULT_KRITERIA, DEFAULT_ALTERNATIF);
+</script>
+</body>
+</html>
