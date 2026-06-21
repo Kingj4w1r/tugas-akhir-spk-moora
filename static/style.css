@@ -293,8 +293,83 @@ footer {
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
-/* responsive */
-@media (max-width: 600px) {
-  .logo-wrap h1 { font-size: 1.2rem; }
-  .podium-box   { width: 90px; }
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE — TABLET (≤ 768px)
+═══════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  header { padding: 22px 16px; }
+  .logo-wrap h1 { font-size: 1.35rem; }
+  .logo-icon { font-size: 2.2rem; }
+
+  main { padding: 0 12px 48px; margin-top: 24px; }
+
+  .card { padding: 18px 14px; }
+  .card-head h2 { font-size: .95rem; }
+
+  .btn-hitung { padding: 12px 36px; font-size: .92rem; }
+
+  /* Table — scroll horizontal tetap, tapi lebih compact */
+  th, td { padding: 8px 10px; font-size: .8rem; }
+  td input[type="text"],
+  td input[type="number"] { padding: 4px 6px; font-size: .8rem; }
+
+  /* Podium lebih kecil */
+  .podium-wrap { gap: 10px; }
+  .podium-box { width: 100px; }
+  .podium-avatar { width: 48px; height: 48px; font-size: 1.2rem; }
+  .podium-name { font-size: .76rem; max-width: 100px; }
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE — HP / MOBILE (≤ 480px)
+═══════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  header { padding: 18px 12px; }
+  .logo-wrap { gap: 10px; }
+  .logo-wrap h1 { font-size: 1.1rem; }
+  .logo-wrap p { font-size: .75rem; }
+  .logo-icon { font-size: 1.8rem; }
+
+  main { padding: 0 8px 40px; margin-top: 16px; }
+
+  .card { padding: 14px 10px; border-radius: 8px; margin-bottom: 16px; }
+  .card-head { gap: 8px; margin-bottom: 12px; }
+  .card-head h2 { font-size: .88rem; }
+  .step-badge { width: 26px; height: 26px; font-size: .72rem; }
+
+  .btn-sm { padding: 5px 10px; font-size: .75rem; }
+  .btn-hitung { padding: 12px 28px; font-size: .88rem; border-radius: 40px; }
+  .center-btn { margin: 6px 0 24px; }
+
+  /* Table — card-style stacking on very small screens */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { min-width: 520px; font-size: .75rem; }
+  th, td { padding: 6px 8px; }
+  td input[type="text"] { min-width: 100px; }
+  td input[type="number"] { min-width: 60px; }
+  td select { font-size: .78rem; padding: 4px 5px; }
+
+  /* Podium vertical layout */
+  .podium-wrap {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+  .podium-item { flex-direction: row; gap: 12px; width: 100%; }
+  .podium-box {
+    width: 80px;
+    height: 50px !important;
+    border-radius: 8px;
+    font-size: .72rem;
+  }
+  .podium-avatar { width: 40px; height: 40px; font-size: 1rem; }
+  .podium-name { font-size: .8rem; max-width: none; text-align: left; }
+  .podium-yi { font-size: .72rem; }
+
+  /* Formula & info */
+  .formula { font-size: .78rem; padding: 3px 10px; }
+  .info-box { font-size: .76rem; padding: 10px 12px; line-height: 1.6; }
+
+  /* Footer */
+  footer { padding: 14px 8px; font-size: .72rem; }
 }
